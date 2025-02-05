@@ -9,8 +9,11 @@ def main():
             centr = i
         else:
             let_arr.append(i)
-    word_list = find_val_words(let_arr, centr)
-    for word in word_list:
+    word_list1 = find_val_words(let_arr, centr, "words.txt")
+    word_list2 = find_val_words(let_arr, centr, "SpellingBeeWords.txt")
+    for word in word_list1:
+        print(word + "\n")
+    for word in word_list2:
         print(word + "\n")
 
 
@@ -28,12 +31,12 @@ def let_not_used(arr, centr):
     return not_used
 
 
-def find_val_words(arr, centr):
+def find_val_words(arr, centr, fileName):
     val_words = []
     cpy_wrds = []
     unused = let_not_used(arr, centr)
     # search for words containing given letters
-    with open("words.txt", "r") as words:
+    with open(fileName, "r") as words:
         for line in words:
             line_s = line.strip()
             # start with center letter
